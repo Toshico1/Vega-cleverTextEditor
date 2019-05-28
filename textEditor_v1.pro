@@ -5,6 +5,11 @@
 #-------------------------------------------------
 
 QT       += core gui
+HEADERS += about_prog.h
+FORMS += about_prog.ui
+QT       += core gui
+HEADERS += dialog.h
+FORMS += dialog.ui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,16 +30,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        about_prog.cpp \
+        dialog.cpp \
         main.cpp \
         mainwindow.cpp
 
 HEADERS += \
+        about_prog.h \
+        dialog.h \
         mainwindow.h
 
 FORMS += \
+        about_prog.ui \
+        dialog.ui \
         mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    res.qrc

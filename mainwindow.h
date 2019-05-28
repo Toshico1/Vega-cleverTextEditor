@@ -22,17 +22,19 @@ public:
 
 private slots:
 
-    void on_button_import_clicked();
-
-    void on_button_new_clicked();
-
-    void on_button_save_clicked();
-
     void on_pushButton_clicked();
 
     void on_fontComboBox_currentFontChanged(const QFont &f);
 
     void on_comboBox_currentIndexChanged(const QString &arg1);
+
+    void on_actionNew_file_triggered();
+
+    void on_actionImport_file_triggered();
+
+    void on_actionSave_file_triggered();
+
+    void on_actionO_triggered();
 
 signals:
     void send_Data_file(const QStringList);
