@@ -4,7 +4,7 @@
 #include "about_prog.h"
 #include <QDebug>
 #include <QTextCharFormat>
-#include <QAction>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -49,6 +49,7 @@ void MainWindow::on_actionNew_file_triggered()
     QFile file("some.txt");
     file.open(QIODevice::WriteOnly);
     file.close();
+    ui->label_6->setText("New file created");
 }
 
 void MainWindow::on_actionImport_file_triggered()
@@ -58,6 +59,7 @@ void MainWindow::on_actionImport_file_triggered()
     file.open(QIODevice::ReadWrite);
     QString file_data = file.readAll();
     ui->plainTextEdit->setPlainText(file_data);
+    ui->label_6->setText("File impt");
 }
 
 void MainWindow::on_actionSave_file_triggered()
@@ -69,6 +71,7 @@ void MainWindow::on_actionSave_file_triggered()
     QTextStream steam(&file);
     steam << data;
     file.close();
+    ui->label_6->setText("File saved");
 }
 
 void MainWindow::on_actionO_triggered()
@@ -84,9 +87,20 @@ void MainWindow::on_action_2_triggered()
     a.show();
 }
 
-void MainWindow::on_pushButton_2_clicked()
-{
+void MainWindow::on_pushButton_2_clicked(){
+
    if(ui->combo_hotkey->currentText() == "New file"){
        ui->actionNew_file->setShortcut(QKeySequence(ui->lineEdit->text()));
+       ui->label_6->setText(" ");
    }
+
+   if(ui->combo_hotkey->currentText() == "Imp file"){
+       ui->actionImport_file->setShortcut(QKeySequence(ui->lineEdit->text()));
+       ui->label_6->setText(" ");
+    }
+
+   if(ui->combo_hotkey->currentText() == "Save file"){
+       ui->actionSave_file->setShortcut(QKeySequence(ui->lineEdit->text()));
+       ui->label_6->setText(" ");
+    }
 }
