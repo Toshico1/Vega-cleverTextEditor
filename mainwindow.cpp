@@ -4,6 +4,7 @@
 #include "about_prog.h"
 #include <QDebug>
 #include <QTextCharFormat>
+#include <QAction>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -44,7 +45,7 @@ void MainWindow::on_comboBox_currentIndexChanged(const QString &arg1)
 
 void MainWindow::on_actionNew_file_triggered()
 {
-    QString str = QFileDialog::getExistingDirectory(0, "Path of new file", "");
+    //QString str = QFileDialog::getExistingDirectory(0, "Path of new file", "");
     QFile file("some.txt");
     file.open(QIODevice::WriteOnly);
     file.close();
@@ -62,7 +63,7 @@ void MainWindow::on_actionImport_file_triggered()
 void MainWindow::on_actionSave_file_triggered()
 {
     QString data = ui->plainTextEdit->toPlainText();
-    QString path = QFileDialog::getExistingDirectory(0, "Path of new file", "");
+    //QString path = QFileDialog::getExistingDirectory(0, "Path of new file", "");
     QFile file("some.txt");
     file.open(QIODevice::WriteOnly);
     QTextStream steam(&file);
@@ -75,4 +76,17 @@ void MainWindow::on_actionO_triggered()
     Dialog dialog;
     dialog.show();
 
+}
+
+void MainWindow::on_action_2_triggered()
+{
+    about_prog a;
+    a.show();
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+   if(ui->combo_hotkey->currentText() == "New file"){
+       ui->actionNew_file->setShortcut(QKeySequence(ui->lineEdit->text()));
+   }
 }

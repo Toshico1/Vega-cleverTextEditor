@@ -13,7 +13,7 @@ class Dialog : public QDialog
 
 public:
     explicit Dialog(QWidget *parent = nullptr);
-    //~Dialog();
+    ~Dialog();
 
 private slots:
     void on_pushButton_clicked();

@@ -8,10 +8,10 @@ Dialog::Dialog(QWidget *parent) :
     ui->setupUi(this);
 }
 
-//Dialog::~Dialog()
-//{
-//    delete ui;
-//}
+Dialog::~Dialog()
+{
+    delete ui;
+}
 
 void Dialog::on_pushButton_clicked()
 {

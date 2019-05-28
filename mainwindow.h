@@ -36,6 +36,10 @@ private slots:
 
     void on_actionO_triggered();
 
+    void on_action_2_triggered();
+
+    void on_pushButton_2_clicked();
+
 signals:
     void send_Data_file(const QStringList);
 
