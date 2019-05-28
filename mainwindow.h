@@ -30,6 +30,10 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_fontComboBox_currentFontChanged(const QFont &f);
+
+    void on_comboBox_currentIndexChanged(const QString &arg1);
+
 signals:
     void send_Data_file(const QStringList);
 

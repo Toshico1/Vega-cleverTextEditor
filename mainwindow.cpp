@@ -54,3 +54,19 @@ void MainWindow::on_pushButton_clicked()
                                      "selection-background-color: " + ui->comboBox_sl->currentText() + ";");
     //ОНО РАБОТАЕТ !!!!!!!!!!! MLG420 BLAZE IT!!!!!!!!!
 }
+
+void MainWindow::on_fontComboBox_currentFontChanged(const QFont &f)
+{
+    QFont font;
+    font.setFamily(ui->fontComboBox->currentText());
+    font.setPointSize(ui->comboBox->currentText().toInt());
+    ui->plainTextEdit->setFont(font);
+}
+
+void MainWindow::on_comboBox_currentIndexChanged(const QString &arg1)
+{
+    QFont font;
+    font.setFamily(ui->fontComboBox->currentText());
+    font.setPointSize(ui->comboBox->currentText().toInt());
+    ui->plainTextEdit->setFont(font);
+}
