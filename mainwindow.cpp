@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QDebug>
-
+#include <QTextCharFormat>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -49,20 +49,38 @@ void MainWindow::on_pushButton_6_clicked()
 {
 
     if(ui->radio_black->isChecked() == true){
-            QPalette p = ui->plainTextEdit->palette();
-            p.setColor(QPalette::Active, QPalette::Base, Qt::black);
-            ui->plainTextEdit->setPalette(p);
+        QPalette p = ui->plainTextEdit->palette();
+        p.setColor(QPalette::Active, QPalette::Base, Qt::black);
+        ui->plainTextEdit->setPalette(p);
     }else if (ui->radio_white->isChecked() == true) {
         QPalette p = ui->plainTextEdit->palette();
         p.setColor(QPalette::Active, QPalette::Base, Qt::white);
         ui->plainTextEdit->setPalette(p);
     }else if (ui->radio_green->isChecked() == true) {
-        QPalette p = ui->plainTextEdit->palette();
-        p.setColor(QPalette::Active, QPalette::Base, Qt::green);
-        ui->plainTextEdit->setPalette(p);
+//        QPalette p = ui->plainTextEdit->palette();
+//        p.setColor(QPalette::Active, QPalette::Base, Qt::green);
+//        ui->plainTextEdit->setPalette(p);
+          ui->plainTextEdit->setStyleSheet("background-color: green;");
     }else if (ui->radio_grey->isChecked() == true) {
-        QPalette p = ui->plainTextEdit->palette();
-        p.setColor(QPalette::Active, QPalette::Base, Qt::gray);
-        ui->plainTextEdit->setPalette(p);
+//        QPalette p = ui->plainTextEdit->palette();
+//        p.setColor(QPalette::Active, QPalette::Base, Qt::gray);
+//        ui->plainTextEdit->setPalette(p);
+         ui->plainTextEdit->setStyleSheet("background-color: gray;");
+    }
+}
+
+void MainWindow::on_pushButton_8_clicked()
+{
+    if(ui->radio_black->isChecked() == true){
+        ui->plainTextEdit->setStyleSheet("color: black;");
+        //ui->plainTextEdit->appendPlainText("<font color = black><\\font>");
+    }else if (ui->radio_white->isChecked() == true) {
+         ui->plainTextEdit->setStyleSheet("color: white;");
+    }else if (ui->radio_green->isChecked() == true) {
+         ui->plainTextEdit->setStyleSheet("color: green;");
+        //ui->plainTextEdit->appendPlainText("<font color = green><\\font>");
+    }else if (ui->radio_grey->isChecked() == true) {
+        ui->plainTextEdit->setStyleSheet("color: grey;");
+        //ui->plainTextEdit->appendPlainText("<font color = grey><\\font>");
     }
 }
