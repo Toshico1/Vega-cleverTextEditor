@@ -22,7 +22,7 @@ void MainWindow::on_pushButton_clicked()
 {
     ui->plainTextEdit->setStyleSheet("color: " + ui->comboBox_tx->currentText()
                                     + ";" "background-color: " + ui->comboBox_bg->currentText() + ";"
-                                    + "selection-color: " + ui->comboBox_sl->currentText() + ";"
+                                    + "selection-color: " + ui->comboBox_tx->currentText() + ";"
                                      "selection-background-color: " + ui->comboBox_sl->currentText() + ";");
     //ОНО РАБОТАЕТ !!!!!!!!!!! MLG420 BLAZE IT!!!!!!!!!
 }
