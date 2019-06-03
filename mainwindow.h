@@ -8,6 +8,8 @@
 #include <QTextStream>
 #include <QPalette>
 
+#include "filemanager.h" //подключаем заголовочный
+
 namespace Ui {
 class MainWindow;
 }
@@ -22,12 +24,6 @@ public:
 
 private slots:
 
-    void on_pushButton_clicked();
-
-    void on_fontComboBox_currentFontChanged(const QFont &f);
-
-    void on_comboBox_currentIndexChanged(const QString &arg1);
-
     void on_actionNew_file_triggered();
 
     void on_actionImport_file_triggered();
@@ -40,11 +36,22 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_comboBox_bg_currentTextChanged(const QString &arg1);
+
+    void on_comboBox_sl_currentTextChanged(const QString &arg1);
+
+    void on_comboBox_tx_currentTextChanged(const QString &arg1);
+
+    void on_comboBox_2_currentTextChanged(const QString &arg1);
+
+    void on_pushButton_clicked();
+
 signals:
     void send_Data_file(const QStringList);
 
 private:
     Ui::MainWindow *ui;
+    FileManager _fileManager;
 };
 
 #endif // MAINWINDOW_H

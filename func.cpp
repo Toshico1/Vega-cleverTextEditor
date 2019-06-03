@@ -1,38 +1,40 @@
+#include "func.h"
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
-#include "dialog.h"
-#include "about_prog.h"
-#include <QDebug>
-#include <QTextCharFormat>
-#include <QFontDialog>
-#include <QtGui>
-#include <QApplication>
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
-{
-    ui->setupUi(this);
+func::func(){
+
+
 }
 
-MainWindow::~MainWindow()
+void MainWindow::on_fontComboBox_currentFontChanged(const QFont &f)
 {
-    delete ui;
+    QFont font;
+    font.setFamily(ui->fontComboBox->currentText());
+    font.setPointSize(ui->comboBox->currentText().toInt());
+    ui->plainTextEdit->setFont(font);
+}
+
+void MainWindow::on_comboBox_currentIndexChanged(const QString &arg1)
+{
+    QFont font;
+    font.setFamily(ui->fontComboBox->currentText());
+    font.setPointSize(ui->comboBox->currentText().toInt());
+    ui->plainTextEdit->setFont(font);
 }
 
 void MainWindow::on_actionNew_file_triggered()
 {
-    QString str = QFileDialog::getSaveFileName(0, "Path of new file", "");
-    _fileManager.saveFile(str);
-
+    QFile file("some.txt");
+    file.open(QIODevice::WriteOnly);
+    file.close();
     ui->label_info->setText("New file created");
 }
 
 void MainWindow::on_actionImport_file_triggered()
 {
     QString file_path = QFileDialog::getOpenFileName(0, "Open file", "", "*.txt *.cpp *.h *.py");
-
-    QString file_data = _fileManager.getFileData(file_path);
-
+    QFile file(file_path);
+    file.open(QIODevice::ReadWrite);
+    QString file_data = file.readAll();
     ui->plainTextEdit->setPlainText(file_data);
     ui->label_info->setText("File impt");
 }
@@ -80,11 +82,16 @@ void MainWindow::on_pushButton_2_clicked(){
     }
 }
 
+void MainWindow::on_comboBox_2_currentTextChanged(const QString &arg1)
+{
+//
+}
+
 void MainWindow::on_comboBox_bg_currentTextChanged(const QString &arg1)
 {
     ui->plainTextEdit->setStyleSheet("color: " + ui->comboBox_tx->currentText()
                                     + ";" "background-color: " + ui->comboBox_bg->currentText() + ";"
-                                    + "selection-color: " + ui->comboBox_tx->currentText() + ";"
+                                    + "selection-color: " + ui->comboBox_tx ->currentText() + ";"
                                      "selection-background-color: " + ui->comboBox_sl->currentText() + ";");
 }
 
@@ -92,7 +99,7 @@ void MainWindow::on_comboBox_sl_currentTextChanged(const QString &arg1)
 {
     ui->plainTextEdit->setStyleSheet("color: " + ui->comboBox_tx->currentText()
                                     + ";" "background-color: " + ui->comboBox_bg->currentText() + ";"
-                                    + "selection-color: " + ui->comboBox_tx->currentText() + ";"
+                                    + "selection-color: " + ui->comboBox_tx ->currentText() + ";"
                                      "selection-background-color: " + ui->comboBox_sl->currentText() + ";");
 }
 
@@ -100,32 +107,6 @@ void MainWindow::on_comboBox_tx_currentTextChanged(const QString &arg1)
 {
     ui->plainTextEdit->setStyleSheet("color: " + ui->comboBox_tx->currentText()
                                     + ";" "background-color: " + ui->comboBox_bg->currentText() + ";"
-                                    + "selection-color: " + ui->comboBox_tx->currentText() + ";"
+                                    + "selection-color: " + ui->comboBox_tx ->currentText() + ";"
                                      "selection-background-color: " + ui->comboBox_sl->currentText() + ";");
-}
-
-
-void MainWindow::on_comboBox_2_currentTextChanged(const QString &arg1)
-{
-
-    QTextCodec* codec = QTextCodec::codecForName(arg1.toLocal8Bit());               //подцепляем кодировку из comboBox
-    QString str = ui->plainTextEdit->toPlainText();
-    QTextStream in(codec->fromUnicode(str), QIODevice::ReadOnly | QIODevice::Text); //отдаем строку в юникоде и меняем кодировку
-    ui->plainTextEdit->setPlainText(in.readLine());                                 //на выставленную выше
-}
-
-
-void MainWindow::on_pushButton_clicked()
-{
-    bool ok;
-
-    QFont fontStyle = QFontDialog::getFont(&ok,this);
-
-    if(ok) {
-            ui->plainTextEdit->setCurrentFont(fontStyle);
-    }
-
-    else {
-            return;
-    }
 }

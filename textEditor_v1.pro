@@ -5,7 +5,9 @@
 #-------------------------------------------------
 
 QT       += core gui
-HEADERS += about_prog.h
+HEADERS += about_prog.h \
+    fileedit.h \
+    filemanager.h
 FORMS += about_prog.ui
 QT       += core gui
 HEADERS += dialog.h
@@ -30,25 +32,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        filemanager.cpp \
+        main.cpp \
+        mainwindow.cpp \
         about_prog.cpp \
         dialog.cpp \
-        main.cpp \
-        mainwindow.cpp
+        fileedit.cpp
 
 HEADERS += \
+        mainwindow.h \
         about_prog.h \
-        dialog.h \
-        mainwindow.h
+        dialog.h
 
 FORMS += \
         about_prog.ui \
         dialog.ui \
         mainwindow.ui
 
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
-
 RESOURCES += \
     res.qrc
+
