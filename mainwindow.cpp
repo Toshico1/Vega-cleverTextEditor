@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    _liter = new Highlighter(ui->plainTextEdit->document());
 }
 
 MainWindow::~MainWindow()
@@ -118,14 +119,8 @@ void MainWindow::on_comboBox_2_currentTextChanged(const QString &arg1)
 void MainWindow::on_pushButton_clicked()
 {
     bool ok;
-
     QFont fontStyle = QFontDialog::getFont(&ok,this);
-
-    if(ok) {
-            ui->plainTextEdit->setCurrentFont(fontStyle);
-    }
-
-    else {
-            return;
+    if(ok){
+        ui->plainTextEdit->setCurrentFont(fontStyle);
     }
 }

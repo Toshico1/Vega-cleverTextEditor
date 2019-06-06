@@ -7,7 +7,8 @@
 QT       += core gui
 HEADERS += about_prog.h \
     fileedit.h \
-    filemanager.h
+    filemanager.h \
+    highlither.h
 FORMS += about_prog.ui
 QT       += core gui
 HEADERS += dialog.h
@@ -33,6 +34,7 @@ CONFIG += c++11
 
 SOURCES += \
         filemanager.cpp \
+        highlither.cpp \
         main.cpp \
         mainwindow.cpp \
         about_prog.cpp \

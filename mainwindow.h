@@ -7,7 +7,7 @@
 #include <QDir>
 #include <QTextStream>
 #include <QPalette>
-
+#include <highlither.h>
 #include "filemanager.h" //подключаем заголовочный
 
 namespace Ui {
@@ -52,6 +52,7 @@ signals:
 private:
     Ui::MainWindow *ui;
     FileManager _fileManager;
+    Highlighter *_liter;
 };
 
 #endif // MAINWINDOW_H
