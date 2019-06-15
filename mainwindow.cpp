@@ -42,11 +42,7 @@ void MainWindow::on_actionSave_file_triggered()
 {
     QString data = ui->plainTextEdit->toPlainText();
     QString path = QFileDialog::getSaveFileName(0, "Path of new file", "");
-    QFile file(path);
-    file.open(QIODevice::WriteOnly);
-    QTextStream steam(&file);
-    steam << data;
-    file.close();
+    _fileManager.saveFile(path);
     ui->label_info->setText("File saved");
 }
 

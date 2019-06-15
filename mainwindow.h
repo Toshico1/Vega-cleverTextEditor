@@ -46,6 +46,7 @@ private slots:
 
     void on_pushButton_clicked();
 
+
 signals:
     void send_Data_file(const QStringList);
 
@@ -54,5 +55,7 @@ private:
     FileManager _fileManager;
     Highlighter *_liter;
 };
+
+
 
 #endif // MAINWINDOW_H
