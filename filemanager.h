@@ -7,7 +7,7 @@ class FileManager
 {
 public:
     FileManager();
-    void saveFile(QString str);
+    void saveFile(QString str, QString data);
     QString getFileData(QString path);
 };
 

@@ -23,7 +23,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionNew_file_triggered()
 {
     QString str = QFileDialog::getSaveFileName(0, "Path of new file", "");
-    _fileManager.saveFile(str);
+    _fileManager.saveFile(str, " ");
 
     ui->label_info->setText("New file created");
 }
@@ -42,7 +42,7 @@ void MainWindow::on_actionSave_file_triggered()
 {
     QString data = ui->plainTextEdit->toPlainText();
     QString path = QFileDialog::getSaveFileName(0, "Path of new file", "");
-    _fileManager.saveFile(path);
+    _fileManager.saveFile(path, data);
     ui->label_info->setText("File saved");
 }
 

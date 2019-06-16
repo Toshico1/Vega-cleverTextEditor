@@ -1,13 +1,16 @@
 #include "filemanager.h"
 #include <QFile>
+#include <QTextStream>
 FileManager::FileManager()
 {
 
 }
-void FileManager::saveFile(QString str){
+void FileManager::saveFile(QString str, QString data){
 
     QFile file(str);
     file.open(QIODevice::WriteOnly);
+    QTextStream stream(&file);
+    stream << data;
     file.close();
     //ui->label_info->setText("New file created");
 }
